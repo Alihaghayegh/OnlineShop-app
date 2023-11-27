@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 ENV = dict(dotenv_values("../.env"))
-print(ENV.get("SECRET_KEY"))
+SECRET_KEY = ENV.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -130,9 +130,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # whitelisting for react port
-CORS_ORIGIN_WHITELIST = {
-    "https://localhost:3000"
-}
+CORS_ORIGIN_WHITELIST = (
+    "https://localhost:3000",
+)
 
 CORS_ALLOW_HEADERS = (
     "accept",
