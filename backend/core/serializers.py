@@ -4,11 +4,12 @@ from .models import Item
 
 
 class ItemSerilizer(serializers.ModelSerializer):
-    model = Item
-    fields = ('id',
-              'title',
-              'description',
-              'price',
-              'image',
-              'created',
-              'updated')
+    class Meta:
+        model = Item
+        fields = ('id',
+                  'title',
+                  'description',
+                  'price',
+                  'image',
+                  'created',
+                  'updated')
