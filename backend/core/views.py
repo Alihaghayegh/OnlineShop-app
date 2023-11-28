@@ -19,6 +19,7 @@ def item_collection(request):
                 'description': request.data.get('description'),
                 'price': request.data.get('price'),
                 'image': request.data.get('image'),
+                'category': request.data.get('category'),
                 }
         serializer = ItemSerilizer(data=data)
         if serializer.is_valid():

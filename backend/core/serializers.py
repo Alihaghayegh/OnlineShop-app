@@ -11,5 +11,7 @@ class ItemSerilizer(serializers.ModelSerializer):
                   'description',
                   'price',
                   'image',
+                  'category',
+                  'is_sold',
                   'created',
                   'updated')
