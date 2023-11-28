@@ -11,8 +11,8 @@ from .serializers import ItemSerilizer
 @api_view(['GET', 'POST'])
 def item_collection(request):
     if request.method == 'GET':
-        notes = Item.objects.all()
-        serializer = ItemSerilizer(notes, many=True)
+        items = Item.objects.all()
+        serializer = ItemSerilizer(items, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         data = {'title': request.data.get('title'),
@@ -31,9 +31,9 @@ def item_collection(request):
 @api_view(['GET'])
 def item_element(request, pk):
     try:
-        note = Item.objects.get(pk=pk)
+        item = Item.objects.get(pk=pk)
     except Item.DoesNotExist:
         return HttpResponse(status=404)
     if request.method == 'GET':
-        serializer = ItemSerilizer(note)
+        serializer = ItemSerilizer(item)
         return Response(serializer.data)
