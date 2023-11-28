@@ -14,4 +14,5 @@ class Item(models.Model):
 
 
     class Meta:
+        ordering = ['created']
         verbose_name_plural = "item"
