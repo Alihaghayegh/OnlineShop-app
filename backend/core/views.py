@@ -45,12 +45,21 @@ def item_collection(request):
 
 
 # Get one item by primary key
-@api_view(['GET'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def item_element(request, pk):
     try:
         item = Item.objects.get(pk=pk)
     except Item.DoesNotExist:
         return HttpResponse(status=404)
+    
     if request.method == 'GET':
         serializer = ItemSerilizer(item)
         return Response(serializer.data)
+    
+    if request.method == 'PUT':
+        serializer = ItemSerilizer(item, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    
