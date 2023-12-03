@@ -51,15 +51,18 @@ def item_element(request, pk):
         item = Item.objects.get(pk=pk)
     except Item.DoesNotExist:
         return HttpResponse(status=404)
-    
+
     if request.method == 'GET':
         serializer = ItemSerilizer(item)
         return Response(serializer.data)
-    
+
     if request.method == 'PUT':
-        serializer = ItemSerilizer(item, data = request.data)
+        serializer = ItemSerilizer(item, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
-    
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'DELETE':
+        item.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
