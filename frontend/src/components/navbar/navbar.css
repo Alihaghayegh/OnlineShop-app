@@ -1,0 +1,40 @@
+div {
+    background-color: #d3d3d3;
+    color: #0B090A;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.main-logo {
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-logo img {
+    width: 60px;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    width: 75%;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+}
+
+li:hover {
+    text-decoration: underline;
+}
