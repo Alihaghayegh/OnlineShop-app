@@ -32,9 +32,9 @@ ul {
 
 li {
     display: inline;
-    padding: 5px;
 }
 
 li:hover {
-    text-decoration: underline;
+    color: #0B090A;
+    border-bottom: solid 2px #252525;
 }
