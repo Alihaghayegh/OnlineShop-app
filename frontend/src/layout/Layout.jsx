@@ -1,20 +1,15 @@
-import Navbar from "./Topbar/Topbar";
-import axios from "axios";
+import Topbar from "./Topbar/Topbar";
+import ProductCard from "../components/productCard/ProductCard"
+
+import './Layout.css'
 
 export default function Layout(props) {
-  const req = () => {
-    axios.get("http://localhost:8000/api/items?format=json").then((res) => {
-      console.log(res.data);
-    });
-  };
-
   return (
     <div>
-      <Navbar />
-      <div>
-        <button onClick={req}>Hello</button>
-
-        {/* {props.children} */}
+      <Topbar />
+      <div className="content-container">
+        <ProductCard />
+        {props.children}
       </div>
     </div>
   );
