@@ -1,8 +1,10 @@
-import Navbar from "./components/navbar/navbar";
+import Layout from "./layout/Layout";
+
+
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Layout />
     </div>
   );
 }

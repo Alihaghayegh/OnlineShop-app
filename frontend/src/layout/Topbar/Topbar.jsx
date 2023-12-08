@@ -1,9 +1,9 @@
 import React from "react";
 
-import "./navbar.css";
+import "./Topbar.css";
 import logo from "../../assets/image/bag.png";
 
-export default function Navbar() {
+export default function Topbar() {
   return (
     <div>
       <div className="navbar-container">
