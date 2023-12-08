@@ -28,7 +28,7 @@ SECRET_KEY = ENV.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -132,8 +132,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # whitelisting for react port
 CORS_ORIGIN_WHITELIST = (
-    "https://localhost:3000",
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
 )
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    'http://127.0.0.1:3000'
+]
+
 
 CORS_ALLOW_HEADERS = (
     "accept",
@@ -154,8 +161,8 @@ CORS_ALLOW_METHODS = (
 )
 
 # Media shit
-# Base url to serve media files  
-MEDIA_URL = '/media/'  
-  
-# Path where media is stored  
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  
+# Base url to serve media files
+MEDIA_URL = '/media/'
+
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
