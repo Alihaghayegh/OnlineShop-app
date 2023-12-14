@@ -1,3 +1,18 @@
+/* Max width for all type of devices */
+:root {
+  /* Extra small devices (phones, 600px and down) */
+  --extra-small: 600px;
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  --small: 600px;
+  /* Medium devices (landscape tablets, 768px and up) */
+  --medium: 768px;
+  /* Large devices (laptops/desktops, 992px and up) */
+  --large: 992px;
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  --extra-large: 1200px;
+}
+
+/* Global font */
 @font-face {
     font-family: 'Vazirmatn';
     src: url('assets/font/vazirmatn-v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2 supports variations'),
