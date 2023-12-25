@@ -6,18 +6,21 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Image from "react-bootstrap/Image";
+import { Outlet, Link } from "react-router-dom";
 import "./root.css";
 
-import bag from "../assets/image/bag.png";
-import search from "../assets/image/search.png";
+import bag from "../../assets/image/bag.png";
+import search from "../../assets/image/search.png";
 
-function OffcanvasExample() {
+function Root() {
   return (
     <>
       <Navbar key={"md"} expand={"md"} className="mb-3">
         <Container fluid>
           <Navbar.Brand>
-            <Image className="main-logo p-0 m-0" src={bag}></Image>
+            <Link to={`/`}>
+              <Image className="main-logo p-0 m-0" src={bag}></Image>
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
           <Navbar.Offcanvas
@@ -32,16 +35,19 @@ function OffcanvasExample() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link>کافه</Nav.Link>
-                <Nav.Link>بلاگ</Nav.Link>
-                <Nav.Link>تماس با ما</Nav.Link>
+                <Nav.Item className="p-2">کافه</Nav.Item>
+                <Nav.Item className="p-2">
+                  <Link to={`/products`}>محصولات</Link>
+                </Nav.Item>
+                <Nav.Item className="p-2">تماس با ما</Nav.Item>
                 <NavDropdown
-                  title="محصولات"
+                  title="دسته بندی ها"
                   id={`offcanvasNavbarDropdown-expand-md`}
                 >
                   <NavDropdown.Item>قهوه</NavDropdown.Item>
-                  <NavDropdown.Item>تجهیزات</NavDropdown.Item>  
+                  <NavDropdown.Item>تجهیزات</NavDropdown.Item>
                   <NavDropdown.Item>خدمات کافه ای</NavDropdown.Item>
+                  <NavDropdown.Item>خدمات راه اندازی</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
               <Form className="d-flex">
@@ -59,8 +65,9 @@ function OffcanvasExample() {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+      <Outlet />
     </>
   );
 }
 
-export default OffcanvasExample;
+export default Root;
