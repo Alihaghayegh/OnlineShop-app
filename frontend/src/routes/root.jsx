@@ -17,7 +17,7 @@ function OffcanvasExample() {
       <Navbar key={"md"} expand={"md"} className="mb-3">
         <Container fluid>
           <Navbar.Brand>
-            <Image className="main-logo" src={bag}></Image>
+            <Image className="main-logo p-0 m-0" src={bag}></Image>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
           <Navbar.Offcanvas
@@ -40,8 +40,7 @@ function OffcanvasExample() {
                   id={`offcanvasNavbarDropdown-expand-md`}
                 >
                   <NavDropdown.Item>قهوه</NavDropdown.Item>
-                  <NavDropdown.Item>تجهیزات</NavDropdown.Item>
-                  <NavDropdown.Divider />
+                  <NavDropdown.Item>تجهیزات</NavDropdown.Item>  
                   <NavDropdown.Item>خدمات کافه ای</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
