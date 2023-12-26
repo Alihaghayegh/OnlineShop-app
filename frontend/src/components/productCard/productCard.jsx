@@ -2,8 +2,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/esm/Image";
 
-import toy from "../assets/image/toy-car.jpg";
-import shop from "../assets/image/shoppingCart.png";
+import toy from "../../assets/image/toy-car.jpg";
+import shop from "../../assets/image/shoppingCart.png";
 
 function ProductCard() {
   return (

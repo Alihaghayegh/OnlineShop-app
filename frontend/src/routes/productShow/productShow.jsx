@@ -1,11 +1,11 @@
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 
-import ProductCard from "../../components/productCard";
+import ProductCard from "../../components/productCard/productCard";
 
 export default function ProductShow() {
   return (
-    <Container className="d-flex flex-wrap justify-items-center my-2">
+    <Container fluid className="d-flex flex-wrap justify-content-center my-2">
       <Col sm>
         <ProductCard />
       </Col>
