@@ -76,7 +76,9 @@ function Root() {
         </Container>
       </Navbar>
       <Outlet />
-      <div className="d-flex justify-content-center align-items-center rounded-4 first-page-content">{location.pathname === "/" && <Search />}</div>
+      <div className="d-flex justify-content-center align-items-center rounded-4 first-page-content">
+        {location.pathname === "/" && <Search />}
+      </div>
     </>
   );
 }
