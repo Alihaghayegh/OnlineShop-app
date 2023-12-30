@@ -1,0 +1,12 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-container > div {
+  margin-right: 1rem;
+}
+
+.card-container > div:last-child {
+  margin-right: 0;
+}

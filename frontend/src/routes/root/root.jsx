@@ -10,6 +10,7 @@ import {
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import bag from "../../assets/image/bag.png";
 import Search from "../../components/search/search";
+import FirstPageProductShow from "../../components/firstPageProductShow/firstPageProductShow";
 import "./root.css";
 
 function Root() {
@@ -79,6 +80,7 @@ function Root() {
       <div className="d-flex justify-content-center align-items-center rounded-4 first-page-content">
         {location.pathname === "/" && <Search />}
       </div>
+      <FirstPageProductShow />
     </>
   );
 }
