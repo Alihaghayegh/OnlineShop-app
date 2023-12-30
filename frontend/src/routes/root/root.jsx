@@ -1,4 +1,6 @@
+// Import consistent styles
 import { useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import {
   Container,
   Navbar,
@@ -7,7 +9,6 @@ import {
   Offcanvas,
   Image,
 } from "react-bootstrap";
-import { Outlet, NavLink, useLocation } from "react-router-dom";
 import bag from "../../assets/image/bag.png";
 import Search from "../../components/search/search";
 import FirstPageProductShow from "../../components/firstPageProductShow/firstPageProductShow";
@@ -18,6 +19,12 @@ function Root() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const location = useLocation();
+
+  // Extracted Search component rendering logic
+  let searchComponent = null;
+  if (location.pathname !== "/") {
+    searchComponent = <Search />;
+  }
 
   return (
     <>
@@ -71,16 +78,22 @@ function Root() {
                   <NavDropdown.Item>خدمات راه اندازی</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
-              {location.pathname !== "/" && <Search />}
+              {searchComponent}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+
       <Outlet />
-      <div className="d-flex justify-content-center align-items-center rounded-4 first-page-content">
-        {location.pathname === "/" && <Search />}
-      </div>
-      <FirstPageProductShow />
+
+      {location.pathname === "/" && (
+        <div>
+          <div className="d-flex justify-content-center align-items-center rounded-4 first-page-content">
+            <Search />
+          </div>
+          <FirstPageProductShow />
+        </div>
+      )}
     </>
   );
 }
