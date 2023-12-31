@@ -89,7 +89,7 @@ function Root() {
       {location.pathname === "/" && (
         <div>
           <div className="d-flex justify-content-center align-items-center rounded-4 first-page-content">
-            <Search className="search" />
+            <Search />
           </div>
           <FirstPageProductShow />
         </div>
