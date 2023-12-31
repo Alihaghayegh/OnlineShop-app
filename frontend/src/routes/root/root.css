@@ -9,10 +9,9 @@
 
 .first-page-content {
   height: 100vh;
-  background-color: #f2f2f2;
   background-image: url("../../assets/image/coffeineFormulaBlur.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: auto;
   background-position: center;
   margin: 0;
 }
