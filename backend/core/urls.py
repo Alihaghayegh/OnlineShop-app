@@ -7,5 +7,4 @@ app_name = 'core'
 urlpatterns = [
     path('items/', views.item_collection, name='item_collection'),
     path('items/<int:pk>/', views.item_element, name='item_element'),
-    path('category/', views.category_collection, name='category_collection'),
 ]
