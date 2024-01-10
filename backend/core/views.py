@@ -5,22 +5,24 @@ from rest_framework import status
 
 from .models import Item
 from .serializers import ItemSerilizer
+from category.models import Category
 
 
 # Get all the items
 @api_view(['GET', 'POST'])
 def item_collection(request):
+    category = Category.objects.all()
+    data = {'title': request.data.get('title'),
+            'description': request.data.get('description'),
+            'price': request.data.get('price'),
+            'image': request.data.get('image'),
+            'category': category,
+            }
     if request.method == 'GET':
         items = Item.objects.all()
         serializer = ItemSerilizer(items, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
-        data = {'title': request.data.get('title'),
-                'description': request.data.get('description'),
-                'price': request.data.get('price'),
-                'image': request.data.get('image'),
-                'category': request.data.get('category'),
-                }
         serializer = ItemSerilizer(data=data)
         if serializer.is_valid():
             serializer.save()

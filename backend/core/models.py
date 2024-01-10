@@ -1,16 +1,6 @@
 from django.db import models
 
-
-class Category(models.Model):
-    name = models.TextField()
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name_plural = 'Categories'
-
-    def __str__(self):
-        return self.name
-
+from category.models import Category
 
 class Item(models.Model):
     title = models.CharField(max_length=255)
