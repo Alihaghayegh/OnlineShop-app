@@ -2,10 +2,11 @@ from rest_framework import serializers
 
 from .models import Item
 from category.seralizers import CategorySerializer
-from category.models import Category
 
 
 class ItemSerilizer(serializers.ModelSerializer):
+    category = CategorySerializer(read_only=True)
+
     class Meta:
         model = Item
         fields = ('id',
