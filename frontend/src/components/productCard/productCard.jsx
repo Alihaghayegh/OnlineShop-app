@@ -7,7 +7,7 @@ import shop from "../../assets/image/shoppingCart.png";
 
 function ProductCard() {
   return (
-    <Card className="my-2" style={{ width: "18rem" }}>
+    <Card className="m-2 align-items-center" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={toy} />
       <Card.Body>
         <Card.Title>نام تستی</Card.Title>
