@@ -14,7 +14,7 @@ def category_collection(request):
         serializer = CategorySerializer(categories, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
-        data = {'category': request.data.get('category')}
+        data = {'name': request.data.get('name')}
         serializer = CategorySerializer(data=data)
         if serializer.is_valid():
             serializer.save()
