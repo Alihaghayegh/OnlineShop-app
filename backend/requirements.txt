@@ -4,3 +4,4 @@ django-extensions
 djangorestframework
 Pillow
 drf-spectacular
+drf-spectacular[sidecar]
