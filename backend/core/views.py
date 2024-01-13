@@ -29,10 +29,6 @@ def create_item(request):
             'image': request.data.get('image'),
             'category': category,
             }
-    # if request.method == 'GET':
-    #     items = Item.objects.all()
-    #     serializer = ItemSerializer(items, many=True)
-    #     return Response(serializer.data)
     if request.method == 'POST':
         serializer = ItemSerializer(data=data)
         if serializer.is_valid():
