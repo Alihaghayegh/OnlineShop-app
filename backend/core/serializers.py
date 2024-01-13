@@ -2,10 +2,12 @@ from rest_framework import serializers
 
 from .models import Item
 from category.seralizers import CategorySerializer
+from users.serializers import CustomUserSerializer
 
 
-class ItemSerilizer(serializers.ModelSerializer):
+class ItemSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
+    created_by = CustomUserSerializer()
 
     class Meta:
         model = Item
@@ -16,5 +18,6 @@ class ItemSerilizer(serializers.ModelSerializer):
                   'image',
                   'is_sold',
                   'category',
+                  'created_by',
                   'created',
                   'updated')

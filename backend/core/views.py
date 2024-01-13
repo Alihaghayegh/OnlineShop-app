@@ -1,16 +1,27 @@
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Item
-from .serializers import ItemSerilizer
+from .serializers import ItemSerializer
 from category.models import Category
 
 
+@api_view(['GET'])
+def get_all_items(request):
+    items = Item.objects.all()
+    serializer = ItemSerializer(items, many=True)
+    if request.method == 'GET':
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 # Get all the items
-@api_view(['GET', 'POST'])
-def item_collection(request):
+@api_view(['POST'])
+@login_required
+def create_item(request):
     category = Category.objects.all()
     data = {'title': request.data.get('title'),
             'description': request.data.get('description'),
@@ -18,12 +29,12 @@ def item_collection(request):
             'image': request.data.get('image'),
             'category': category,
             }
-    if request.method == 'GET':
-        items = Item.objects.all()
-        serializer = ItemSerilizer(items, many=True)
-        return Response(serializer.data)
-    elif request.method == 'POST':
-        serializer = ItemSerilizer(data=data)
+    # if request.method == 'GET':
+    #     items = Item.objects.all()
+    #     serializer = ItemSerializer(items, many=True)
+    #     return Response(serializer.data)
+    if request.method == 'POST':
+        serializer = ItemSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -32,6 +43,7 @@ def item_collection(request):
 
 # Get one item by primary key
 @api_view(['GET', 'PUT', 'DELETE'])
+@login_required
 def item_element(request, pk):
     try:
         item = Item.objects.get(pk=pk)
@@ -39,11 +51,11 @@ def item_element(request, pk):
         return HttpResponse(status=404)
 
     if request.method == 'GET':
-        serializer = ItemSerilizer(item)
+        serializer = ItemSerializer(item)
         return Response(serializer.data)
 
     if request.method == 'PUT':
-        serializer = ItemSerilizer(item, data=request.data)
+        serializer = ItemSerializer(item, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
