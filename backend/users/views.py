@@ -1,3 +1,5 @@
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -17,6 +19,7 @@ def user_list(request):
     return Response(serializer.data)
 
 
+@extend_schema(request={'application/x-www-form-urlencoded': OpenApiTypes.OBJECT})
 @api_view(['POST'])
 def signup(request):
     serializer = CustomUserSerializer(data=request.data)
@@ -30,6 +33,7 @@ def signup(request):
     return Response(serializer.errors, status=status.HTTP_200_OK)
 
 
+@extend_schema(request={'application/x-www-form-urlencoded': OpenApiTypes.OBJECT})
 @api_view(['POST'])
 def login(request):
     user = get_object_or_404(CustomUser, username=request.data['username'])

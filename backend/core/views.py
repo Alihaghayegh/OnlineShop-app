@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -19,6 +21,7 @@ def get_all_items(request):
 
 
 # Get all the items
+@extend_schema(request={'application/x-www-form-urlencoded': OpenApiTypes.OBJECT})
 @api_view(['POST'])
 @login_required
 def create_item(request):
@@ -38,6 +41,7 @@ def create_item(request):
 
 
 # Get one item by primary key
+@extend_schema(request={'application/x-www-form-urlencoded': OpenApiTypes.OBJECT})
 @api_view(['GET', 'PUT', 'DELETE'])
 @login_required
 def item_element(request, pk):
